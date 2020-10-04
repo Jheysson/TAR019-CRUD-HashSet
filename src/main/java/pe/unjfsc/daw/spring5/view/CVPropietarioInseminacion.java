@@ -16,7 +16,7 @@ private static final Logger log = LoggerFactory.getLogger("CVPropietarioInsemina
 		ApplicationContext oCntx = new ClassPathXmlApplicationContext("context-propietarioInseminacion.xml");
 		
 		log.info("Context: {}",oCntx);
-		CMPropietarioInseminacion oCMPropiInse= (CMPropietarioInseminacion) oCntx.getBean("idCMPropietarioInse");
+		CMPropietarioInseminacion oCMPropiInse= (CMPropietarioInseminacion) oCntx.getBean("idCMPropiInseminacion");
 		CEPropietarioInseminacion oCEPropiInse=  new CEPropietarioInseminacion(520, 588.00, 1.68, "Establo actualizado", 25.00, "26/09/2020", 1, "Gyrolando","N/O");
 		
 
@@ -24,9 +24,9 @@ private static final Logger log = LoggerFactory.getLogger("CVPropietarioInsemina
 		log.info("Todos los registros: {}", oCMPropiInse.consultaAll());
 		
 		//Actualizar un registro 
-		oCMPropiInse.updatePropiInseminacion(oCEPropiInse);
+		oCMPropiInse.savePropiInseminacion(oCEPropiInse);
 		
-		log.info("[EVL] Todos los registros : {}" , oCMPropiInse.consultaAll());
+		log.info("[EVL] Todos los registros actuales: {}" , oCMPropiInse.consultaAll());
 		
 		
 		((ConfigurableApplicationContext) oCntx).close();

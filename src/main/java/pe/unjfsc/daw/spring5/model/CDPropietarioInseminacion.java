@@ -22,7 +22,7 @@ public class CDPropietarioInseminacion {
 		codigo[2] = 320;
 		codigo[3] = 420;
 		codigo[4] = 520;
-	
+		
 		//inyectar pesos
 		peso = new double[size];
 		peso[0] = 620.00;
@@ -89,12 +89,12 @@ public class CDPropietarioInseminacion {
 		
 	}
 	
-	public CDPropietarioInseminacion(int[] codigo, double[] peso, double[] talla, 
+	public CDPropietarioInseminacion(int[] Codigo, double[] peso, double[] talla, 
 	String[] lugar, double[] precio, String[] fechcompra, int[] estado, String[] genotipo, 
 	String[] obse) {
 			
 			super();
-		this.codigo = codigo;
+		codigo = Codigo;
 		this.peso = peso;
 		this.talla = talla;
 		this.lugar = lugar;
