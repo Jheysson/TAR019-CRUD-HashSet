@@ -10,7 +10,7 @@ public class CENatalidad {
 	private int madre;
 	private int padre;
 	private int Estado;
-	
+	//OMGLOL
 	public CENatalidad() {
 		
 	}
