@@ -28,17 +28,7 @@ public class CMNatalidad  implements CINatalidad{
 	@Override
 	public void saveNatalidad(CENatalidad pCENatalidad) {
 		log.info("GUARDANDO EL REGISTRO CON EL CUIA "+ pCENatalidad.getCUIA()+"...");
-		moHashCENatalidad.add(new CENatalidad(
-				pCENatalidad.getCUIA(), 
-				pCENatalidad.getFechNacimiento(), 
-				pCENatalidad.getPeso(), 
-				pCENatalidad.getTalla(), 
-				pCENatalidad.getGenotipo(), 
-				pCENatalidad.getSexo(), 
-				pCENatalidad.getMadre(), 
-				pCENatalidad.getPadre(), 
-				pCENatalidad.getEstado()
-				));		
+		moHashCENatalidad.add(pCENatalidad);		
 	}
 
 	@Override

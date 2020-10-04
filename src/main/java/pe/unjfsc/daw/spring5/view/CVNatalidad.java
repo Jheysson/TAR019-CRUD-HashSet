@@ -16,7 +16,7 @@ public class CVNatalidad {
 		log.info("[EVL] Context: {}",oCntx);
 		
 		CMNatalidad oCMNatalidad = (CMNatalidad) oCntx.getBean("idCMNatalidad");
-		CENatalidad oCENatalidad = new CENatalidad(2002, "4/10/2020", 600, 2.00, "Criollo", "Hembra", 7001, 8001, 1);
+		CENatalidad oCENatalidad = new CENatalidad(2020, "4/10/2020", 600, 2.00, "Criollo", "Hembra", 7001, 8001, 1);
 		
 		//log.info("[EVL] Todos los registros : {}" , oCMNatalidad.consultaAll());
 		//log.info("[EVL] Solo un registro : {}" , oCMNatalidad.consultarByCuia(2002));
@@ -26,8 +26,8 @@ public class CVNatalidad {
 		//log.info("[EVL] Todos los registros : {}" , oCMNatalidad.consultarByCuia(2001));
 		//oCMNatalidad.deleteNatalidad(2002);
 		//log.info("[EVL] Todos los registros : {}" , oCMNatalidad.consultaAll());
-		oCMNatalidad.updateNatalidad(oCENatalidad);
-		//oCMNatalidad.saveNatalidad(oCENatalidad);
+		//oCMNatalidad.updateNatalidad(oCENatalidad);
+		oCMNatalidad.saveNatalidad(oCENatalidad);
 		log.info("[EVL] Todos los registros : {}" , oCMNatalidad.consultaAll());
 		((ConfigurableApplicationContext) oCntx).close();
 
