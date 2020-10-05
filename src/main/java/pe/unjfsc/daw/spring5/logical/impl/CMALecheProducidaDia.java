@@ -7,9 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import pe.unjfsc.daw.spring5.entity.CELecheProducidaDia;
-import pe.unjfsc.daw.spring5.logical.CILecheProducidaDia;
+import pe.unjfsc.daw.spring5.logical.CALecheProducidaDia;
 
-public class CMLecheProducidaDia implements CILecheProducidaDia {
+public class CMALecheProducidaDia extends CALecheProducidaDia  {
 
 	private static final Logger log = LoggerFactory.getLogger("CMLecheProducidaDia");
 	private CELecheProducidaDia moCELecheProducidaDia;
@@ -18,7 +18,7 @@ public class CMLecheProducidaDia implements CILecheProducidaDia {
 
 	private HashSet<CELecheProducidaDia> moHashCELecheProducidaDia;
 
-	public CMLecheProducidaDia() {
+	public CMALecheProducidaDia() {
 		moHashCELecheProducidaDia = new HashSet<CELecheProducidaDia>();
 		moHashCELecheProducidaDia.add(new CELecheProducidaDia(1, 20.5, "3/10/2020", 4012));
 		moHashCELecheProducidaDia.add(new CELecheProducidaDia(2, 21.5, "4/10/2020", 4013));
@@ -29,12 +29,13 @@ public class CMLecheProducidaDia implements CILecheProducidaDia {
 		moHashCELecheProducidaDia.add(new CELecheProducidaDia(7, 26.5, "9/10/2020", 4018));
 
 	}
-
+	
 	@Override
 	public void saveLecheProducidaDia(CELecheProducidaDia pCELecheProducidaDia) {
 		log.info("GUARDANDO EL REGISTRO CON EL ID " + pCELecheProducidaDia.getIdLechProd() + "...");
 		moHashCELecheProducidaDia.add(pCELecheProducidaDia);
 
+		
 	}
 
 	@Override
@@ -51,7 +52,6 @@ public class CMLecheProducidaDia implements CILecheProducidaDia {
 				moCELecheProducidaDia.setVacaProducion(pCELecheProducidaDia.getVacaProducion());
 			}
 		}
-
 	}
 
 	@Override
@@ -66,7 +66,6 @@ public class CMLecheProducidaDia implements CILecheProducidaDia {
 				break;
 			}
 		}
-
 	}
 
 	@Override
@@ -92,7 +91,7 @@ public class CMLecheProducidaDia implements CILecheProducidaDia {
 		}
 		return oCELecheProducidaDiaResponse;
 	}
-
+	
 	public void setoCELecheProducidaDiaRequest(CELecheProducidaDia oCELecheProducidaDiaRequest) {
 		this.oCELecheProducidaDiaRequest = oCELecheProducidaDiaRequest;
 	}
@@ -100,4 +99,5 @@ public class CMLecheProducidaDia implements CILecheProducidaDia {
 	public void setoCELecheProducidaDiaResponse(CELecheProducidaDia oCELecheProducidaDiaResponse) {
 		this.oCELecheProducidaDiaResponse = oCELecheProducidaDiaResponse;
 	}
+
 }

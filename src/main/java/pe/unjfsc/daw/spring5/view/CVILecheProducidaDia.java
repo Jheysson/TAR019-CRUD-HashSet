@@ -7,15 +7,15 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import pe.unjfsc.daw.spring5.entity.CELecheProducidaDia;
-import pe.unjfsc.daw.spring5.logical.impl.CMLecheProducidaDia;
+import pe.unjfsc.daw.spring5.logical.impl.CMILecheProducidaDia;
 
-public class CVLecheProducidaDia {
+public class CVILecheProducidaDia {
 	private static final Logger log = LoggerFactory.getLogger("CVLecheProducidaDia");
 	
 	public static void main(String[] args) {
-		ApplicationContext oCntx = new ClassPathXmlApplicationContext("context-LecheProducidaDia.xml");
+		ApplicationContext oCntx = new ClassPathXmlApplicationContext("interface-context-LecheProducidaDia.xml");
 		
-		CMLecheProducidaDia oCMLecheProducidaDia = (CMLecheProducidaDia) oCntx.getBean("idCMLecheProducidaDia");
+		CMILecheProducidaDia oCMLecheProducidaDia = (CMILecheProducidaDia) oCntx.getBean("idCMILecheProducidaDia");
 		CELecheProducidaDia oCELecheProducidaDia = new CELecheProducidaDia(1, 10.00, "1/10/2020", 4012);
 		
 		log.info("[EVL] Todos los registros : {}" , oCMLecheProducidaDia.consultaAll());
