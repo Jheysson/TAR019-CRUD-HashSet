@@ -5,9 +5,7 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<bean id="idCEPropiInseminacion" class="pe.unjfsc.daw.spring5.entity.CEPropietarioInseminacion"></bean>
-	<bean id="idCDPropiInseminacion" class="pe.unjfsc.daw.spring5.model.CDPropietarioInseminacion"></bean>
-	
-	<bean id="idCMPropiInseminacion" class="pe.unjfsc.daw.spring5.logical.impl.CMPropietarioInseminacion">	
+	<bean id="idCMIPropiInseminacion" class="pe.unjfsc.daw.spring5.logical.impl.CMIPropietarioInseminacion">	
 		<property name="oCEPropietarioInseResponse" ref="idCEPropiInseminacion"></property>
 		<property name="oCEPropietarioInseRequest" ref="idCEPropiInseminacion"></property>
 	</bean>

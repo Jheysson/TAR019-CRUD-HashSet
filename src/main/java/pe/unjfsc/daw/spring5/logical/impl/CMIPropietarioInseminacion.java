@@ -2,14 +2,12 @@ package pe.unjfsc.daw.spring5.logical.impl;
 
 import java.util.HashSet;
 import java.util.Iterator;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import pe.unjfsc.daw.spring5.entity.CEPropietarioInseminacion;
 import pe.unjfsc.daw.spring5.logical.CIPropietarioInseminacion;
 
-public class CMPropietarioInseminacion implements CIPropietarioInseminacion{
+public class CMIPropietarioInseminacion implements CIPropietarioInseminacion{
 	
 private static final Logger log = LoggerFactory.getLogger("CMPropietarioInseminacion");
 	
@@ -19,7 +17,8 @@ private static final Logger log = LoggerFactory.getLogger("CMPropietarioInsemina
 	
 	private HashSet<CEPropietarioInseminacion> moHashCEPropietario;
 	
-	public CMPropietarioInseminacion() {
+	public CMIPropietarioInseminacion() {
+		
 		moHashCEPropietario = new HashSet<CEPropietarioInseminacion>();
 		moHashCEPropietario.add(new CEPropietarioInseminacion(120, 620.00, 1.61, "Establo 1", 20.00, "20/09/2020", 1, "Hereford","N/O"));
 		moHashCEPropietario.add(new CEPropietarioInseminacion(220, 600.00, 1.63, "Establo 2", 24.00, "21/09/2020", 1, "Charolais","N/O"));
@@ -80,7 +79,7 @@ private static final Logger log = LoggerFactory.getLogger("CMPropietarioInsemina
 	}
 
 	@Override
-	public CEPropietarioInseminacion consultarBycodigo(int codigo) {
+	public CEPropietarioInseminacion showBycodigo(int codigo) {
 		log.info("MOSTRANDO EL REGISTRO "+ codigo +"......");
 		
 		

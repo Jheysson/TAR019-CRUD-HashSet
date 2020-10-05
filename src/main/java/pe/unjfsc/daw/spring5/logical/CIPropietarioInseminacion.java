@@ -10,7 +10,7 @@ public interface CIPropietarioInseminacion {
 	public void deletePropieInseminacion(int codigo);
 	
 	public HashSet<CEPropietarioInseminacion> consultaAll();
-	public CEPropietarioInseminacion consultarBycodigo(int codigo);
+	public CEPropietarioInseminacion showBycodigo(int codigo);
 
 
 }
