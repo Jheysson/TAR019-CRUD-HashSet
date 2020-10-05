@@ -61,5 +61,6 @@ public class CVIGanadoVacuno {
 		//Verificamos si se eliminó
 		log.info("Verificar la eliminación: {}",oCMIGanadoVacuno.consultaAll());
 		((ConfigurableApplicationContext) oCntx).close();
+		
 	}
 }
