@@ -6,11 +6,14 @@
 
 	<bean id="idCEGanadoVacuno" class="pe.unjfsc.daw.spring5.entity.CEGanadoVacuno"></bean>
 	
+	<!-- Bean para el uso de métodos con clase Interface -->
 	<bean id="idCMIGanadoVacuno" class="pe.unjfsc.daw.spring5.logical.impl.CMIGanadoVacuno">
 		<property name="oCEGanadoVacunoResponse" ref="idCEGanadoVacuno"></property>
 		<property name="oCEGanadoVacunoRequest" ref="idCEGanadoVacuno"></property>
 	</bean>
 	
+	
+	<!-- Bean para el uso de métodos con clase Abstract -->
 	<bean id="idCMAGanadoVacuno" class="pe.unjfsc.daw.spring5.logical.impl.CMAGanadoVacuno">
 		<property name="oCEGanadoVacunoResponse" ref="idCEGanadoVacuno"></property>
 		<property name="oCEGanadoVacunoRequest" ref="idCEGanadoVacuno"></property>
