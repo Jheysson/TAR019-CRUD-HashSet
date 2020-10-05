@@ -18,19 +18,34 @@ public class CMIGanadoVacuno implements CIGanadoVacuno{
 	private CEGanadoVacuno moCEGanadoVacuno;
 	private HashSet<CEGanadoVacuno> hashGanadoVacuno;
 	private CEGanadoVacuno oCEGanadoVacunoResponse;
+	private CEGanadoVacuno oCEGanadoVacunoRequest;
 	
+	public void setoCEGanadoVacunoRequest(CEGanadoVacuno oCEGanadoVacunoRequest) {
+		this.oCEGanadoVacunoRequest = oCEGanadoVacunoRequest;
+	}
 	private String etapa = "";
 	private LocalDate fechActual = LocalDate.now();
 	
 	public CMIGanadoVacuno() {
 		hashGanadoVacuno = new HashSet<CEGanadoVacuno>();
-		hashGanadoVacuno.add(new CEGanadoVacuno(2001,"Maria", LocalDate.of(2017, 3, 7), "Hembra", 2, "Adulto", 450.0, 140.0, "Producción", "Normal", "Heredord", "Leche", "Autoctono", 0, 0));
-		hashGanadoVacuno.add(new CEGanadoVacuno(2002, "Juana", LocalDate.of(2017, 3, 5), "Hembra", 2, "Adulto", 450.0, 140.0, "Producción", "Normal", "Hereford", "Leche", "Comprado", 0, 0));
+		hashGanadoVacuno.add(new CEGanadoVacuno(2001,"Maria", LocalDate.of(2017, 3, 7), "Hembra", 2, "Adulto", 430.0, 1.4, "Producción", "Normal", "Heredord", "Leche", "Autoctono", 0, 0));
+		hashGanadoVacuno.add(new CEGanadoVacuno(2002, "Juana", LocalDate.of(2017, 3, 5), "Hembra", 2, "Adulto", 450.0, 1.5, "Producción", "Normal", "Hereford", "Leche", "Comprado", 0, 0));
 	}
 	@Override
 	public void saveGanadoVacuno(CEGanadoVacuno poCEGanadoGacuno) {
 		log.info("GUARDANDO REGISTRO CON EL CUIA "+poCEGanadoGacuno.getCuia());
-		hashGanadoVacuno.add(poCEGanadoGacuno);
+		oCEGanadoVacunoRequest.setCuia(poCEGanadoGacuno.getCuia());
+		oCEGanadoVacunoRequest.setAliasGanadoVacuno(poCEGanadoGacuno.getAliasGanadoVacuno());
+		oCEGanadoVacunoRequest.setCuiaMadre(poCEGanadoGacuno.getCuiaMadre());
+		oCEGanadoVacunoRequest.setCuiaPadre(poCEGanadoGacuno.getCuiaPadre());
+		oCEGanadoVacunoRequest.setEdad(calcularEdad(poCEGanadoGacuno.getFecha_nacimiento()));
+		oCEGanadoVacunoRequest.setEstaActivo(poCEGanadoGacuno.getEstaActivo());
+		oCEGanadoVacunoRequest.setEstaAnim(poCEGanadoGacuno.getEstaAnim());
+		oCEGanadoVacunoRequest.setFecha_nacimiento(poCEGanadoGacuno.getFecha_nacimiento());
+		oCEGanadoVacunoRequest.setEtapa(asignarEtapa(calcularEdad(poCEGanadoGacuno.getFecha_nacimiento())));
+		oCEGanadoVacunoRequest.setGenotipo(poCEGanadoGacuno.getGenotipo());
+		oCEGanadoVacunoRequest.setOrigen(poCEGanadoGacuno.getOrigen());
+		hashGanadoVacuno.add(oCEGanadoVacunoRequest);
 	}
 
 	@Override
@@ -56,6 +71,7 @@ public class CMIGanadoVacuno implements CIGanadoVacuno{
 				
 			}
 		}
+		log.info("Verificar actualización: {}",consultaAll());
 		
 	}
 
@@ -77,13 +93,12 @@ public class CMIGanadoVacuno implements CIGanadoVacuno{
 
 	@Override
 	public HashSet<CEGanadoVacuno> consultaAll() {
-		log.info("REGISTROS EXISTENTES...");
 		return hashGanadoVacuno;
 	}
 
 	@Override
 	public CEGanadoVacuno showByCUIA(int CUIA) {
-		log.info("REGISTRO CON EL CUIA "+CUIA+":");
+		log.info("BUSCANDO REGISTRO CON EL CUIA "+CUIA+":");
 		Iterator<CEGanadoVacuno> it = hashGanadoVacuno.iterator();
 		
 		while(it.hasNext()) {
@@ -93,6 +108,7 @@ public class CMIGanadoVacuno implements CIGanadoVacuno{
 				break;
 			}
 		}
+		log.info("{}",oCEGanadoVacunoResponse);
 		return oCEGanadoVacunoResponse;
 	}
 
@@ -112,5 +128,9 @@ public class CMIGanadoVacuno implements CIGanadoVacuno{
 			etapa = "Adulto";
 		}
 		return etapa;
-	}	
+	}
+	public void setoCEGanadoVacunoResponse(CEGanadoVacuno oCEGanadoVacunoResponse) {
+		this.oCEGanadoVacunoResponse = oCEGanadoVacunoResponse;
+	}
+	
 }

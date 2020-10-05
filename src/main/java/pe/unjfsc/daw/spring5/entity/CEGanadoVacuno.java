@@ -43,6 +43,27 @@ public class CEGanadoVacuno {
 		this.cuiaPadre = cuiaPadre;
 		this.cuiaMadre = cuiaMadre;
 	}
+	
+	
+
+	public CEGanadoVacuno(int cuia, String aliasGanadoVacuno, LocalDate fecha_nacimiento, String sexo, double peso,
+			double talla, String estaActivo, String estaAnim, String genotipo, String tipoGana, String origen,
+			int cuiaPadre, int cuiaMadre) {
+		super();
+		this.cuia = cuia;
+		this.aliasGanadoVacuno = aliasGanadoVacuno;
+		this.fecha_nacimiento = fecha_nacimiento;
+		this.sexo = sexo;
+		this.peso = peso;
+		this.talla = talla;
+		this.estaActivo = estaActivo;
+		this.estaAnim = estaAnim;
+		this.genotipo = genotipo;
+		this.tipoGana = tipoGana;
+		this.origen = origen;
+		this.cuiaPadre = cuiaPadre;
+		this.cuiaMadre = cuiaMadre;
+	}
 
 	public int getCuia() {
 		return cuia;
