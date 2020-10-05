@@ -9,6 +9,15 @@ public class CEGanadoVacuno {
 	private String sexo;
 	private int edad;
 	private String Etapa;
+	private double peso;
+	private double talla;
+	private String estaActivo;
+	private String estaAnim;
+	private String genotipo;
+	private String tipoGana;
+	private String origen;
+	private String cuiaPadre;
+	private String cuiaMadre;
 
 	public CEGanadoVacuno() {
 		
