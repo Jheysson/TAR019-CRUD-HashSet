@@ -1,6 +1,6 @@
 package pe.unjfsc.daw.spring5.logical.impl;
 
-import java.util.Collection;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -9,9 +9,8 @@ import org.slf4j.LoggerFactory;
 
 import pe.unjfsc.daw.spring5.entity.CENatalidad;
 import pe.unjfsc.daw.spring5.logical.CINatalidad;
-import pe.unjfsc.daw.spring5.model.CDNatalidad;
 
-public class CMNatalidad  implements CINatalidad{
+public class CMINatalidad implements CINatalidad{
 	private static final Logger log = LoggerFactory.getLogger("CMCrudHashSetLSA");
 	private CENatalidad moCENatalidad;
 	private CENatalidad oCENatalidadRequest;
@@ -19,12 +18,12 @@ public class CMNatalidad  implements CINatalidad{
 	
 	private HashSet<CENatalidad> moHashCENatalidad;
 	
-	public CMNatalidad() {
+	public CMINatalidad() {
 		moHashCENatalidad = new HashSet<CENatalidad>();
-		moHashCENatalidad.add(new CENatalidad(2001,"2/10/2020", 200, 1.69, "Criollo", "Hembra", 3001, 4001, 1));
-		moHashCENatalidad.add(new CENatalidad(2002,"3/10/2020", 210, 1.39, "Criollo", "Macho", 4001, 5001, 1));
+		
+		moHashCENatalidad.add(new CENatalidad(2001,LocalDate.of(2020, 7, 4), 200, 1.69, "Criollo", "Hembra", 3001, 4001, 1));
+		moHashCENatalidad.add(new CENatalidad(2002,LocalDate.of(2020, 7, 5), 210, 1.39, "Criollo", "Macho", 4001, 5001, 1));
 	}
-	
 	@Override
 	public void saveNatalidad(CENatalidad pCENatalidad) {
 		log.info("GUARDANDO EL REGISTRO CON EL CUIA "+ pCENatalidad.getCUIA()+"...");
@@ -64,7 +63,6 @@ public class CMNatalidad  implements CINatalidad{
 				break;
 			}
 		}
-		
 	}
 
 	@Override
@@ -90,7 +88,6 @@ public class CMNatalidad  implements CINatalidad{
 		}
 		return oCENatalidadResponse;
 	}
-
 	public void setoCENatalidadRequest(CENatalidad oCENatalidadRequest) {
 		this.oCENatalidadRequest = oCENatalidadRequest;
 	}
@@ -98,5 +95,4 @@ public class CMNatalidad  implements CINatalidad{
 	public void setoCENatalidadResponse(CENatalidad oCENatalidadResponse) {
 		this.oCENatalidadResponse = oCENatalidadResponse;
 	}
-
 }
