@@ -15,7 +15,7 @@ public class CVIGanadoVacuno {
 	private static final Logger log = LoggerFactory.getLogger("CVIGanadoVacuno");
 	
 	public static void main(String[] args) {
-		ApplicationContext oCntx = new ClassPathXmlApplicationContext("context-ganadoVacuno.xml");
+		ApplicationContext oCntx = new ClassPathXmlApplicationContext("interface-context-ganadoVacuno.xml");
 		
 		log.info("Context: {}",oCntx);
 		
@@ -51,7 +51,7 @@ public class CVIGanadoVacuno {
 				"Autoctono", 2001,
 				2006);
 		oCMIGanadoVacuno.saveGanadoVacuno(oCEGanadoVacuno2);
-		
+		 
 		//Verificamos el último registro
 		log.info("Verificar último registro: {}",oCMIGanadoVacuno.consultaAll());
 		

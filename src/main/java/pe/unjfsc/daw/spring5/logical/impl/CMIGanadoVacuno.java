@@ -30,7 +30,7 @@ public class CMIGanadoVacuno implements CIGanadoVacuno{
 		hashGanadoVacuno = new HashSet<CEGanadoVacuno>();
 		hashGanadoVacuno.add(new CEGanadoVacuno(2001,"Maria", LocalDate.of(2017, 3, 7), "Hembra", 2, "Adulto", 430.0, 1.4, "Producción", "Normal", "Heredord", "Leche", "Autoctono", 0, 0));
 		hashGanadoVacuno.add(new CEGanadoVacuno(2002, "Juana", LocalDate.of(2017, 3, 5), "Hembra", 2, "Adulto", 450.0, 1.5, "Producción", "Normal", "Hereford", "Leche", "Comprado", 0, 0));
-	}
+	} 
 	@Override
 	public void saveGanadoVacuno(CEGanadoVacuno poCEGanadoGacuno) {
 		log.info("GUARDANDO REGISTRO CON EL CUIA "+poCEGanadoGacuno.getCuia());
