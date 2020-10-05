@@ -6,7 +6,7 @@ public class CELecheProducidaDia {
 	private double cantLitrLechProd;
 	private String fechLechProd;
 	private int vacaProducion;
-	
+	//obs
 	public CELecheProducidaDia() {}
 	
 	public CELecheProducidaDia(int _idLechProd, double _cantLitrLechProd,String _fechLechProd, int _vacaProducion) {
