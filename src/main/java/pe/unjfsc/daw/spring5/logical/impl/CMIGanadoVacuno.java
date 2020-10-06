@@ -30,20 +30,30 @@ public class CMIGanadoVacuno implements CIGanadoVacuno{
 		hashGanadoVacuno.add(new CEGanadoVacuno(2002, "Juana", LocalDate.of(2017, 3, 5), "Hembra", 2, "Adulto", 450.0, 1.5, "Producción", "Normal", "Hereford", "Leche", "Comprado", 0, 0));
 	} 
 	@Override
-	public void saveGanadoVacuno(CEGanadoVacuno poCEGanadoGacuno) {
-		log.info("GUARDANDO REGISTRO CON EL CUIA "+poCEGanadoGacuno.getCuia());
-		oCEGanadoVacunoRequest.setCuia(poCEGanadoGacuno.getCuia());
-		oCEGanadoVacunoRequest.setAliasGanadoVacuno(poCEGanadoGacuno.getAliasGanadoVacuno());
-		oCEGanadoVacunoRequest.setCuiaMadre(poCEGanadoGacuno.getCuiaMadre());
-		oCEGanadoVacunoRequest.setCuiaPadre(poCEGanadoGacuno.getCuiaPadre());
-		oCEGanadoVacunoRequest.setEdad(calcularEdad(poCEGanadoGacuno.getFecha_nacimiento()));
-		oCEGanadoVacunoRequest.setEstaActivo(poCEGanadoGacuno.getEstaActivo());
-		oCEGanadoVacunoRequest.setEstaAnim(poCEGanadoGacuno.getEstaAnim());
-		oCEGanadoVacunoRequest.setFecha_nacimiento(poCEGanadoGacuno.getFecha_nacimiento());
-		oCEGanadoVacunoRequest.setEtapa(asignarEtapa(calcularEdad(poCEGanadoGacuno.getFecha_nacimiento())));
-		oCEGanadoVacunoRequest.setGenotipo(poCEGanadoGacuno.getGenotipo());
-		oCEGanadoVacunoRequest.setOrigen(poCEGanadoGacuno.getOrigen());
-		hashGanadoVacuno.add(oCEGanadoVacunoRequest);
+	public void saveGanadoVacuno(CEGanadoVacuno poCEGanadoVacuno) {
+		boolean madreApta = buscarMadre(poCEGanadoVacuno);
+		log.info("Madre apta: "+madreApta);
+		if (madreApta) {
+			oCEGanadoVacunoRequest.setCuia(poCEGanadoVacuno.getCuia());
+			oCEGanadoVacunoRequest.setAliasGanadoVacuno(poCEGanadoVacuno.getAliasGanadoVacuno());
+			oCEGanadoVacunoRequest.setCuiaMadre(poCEGanadoVacuno.getCuiaMadre());
+			oCEGanadoVacunoRequest.setCuiaPadre(poCEGanadoVacuno.getCuiaPadre());
+			oCEGanadoVacunoRequest.setEdad(calcularEdad(poCEGanadoVacuno.getFecha_nacimiento()));
+			oCEGanadoVacunoRequest.setEstaActivo(poCEGanadoVacuno.getEstaActivo());
+			oCEGanadoVacunoRequest.setEstaAnim(poCEGanadoVacuno.getEstaAnim());
+			oCEGanadoVacunoRequest.setFecha_nacimiento(poCEGanadoVacuno.getFecha_nacimiento());
+			oCEGanadoVacunoRequest.setEtapa(asignarEtapa(calcularEdad(poCEGanadoVacuno.getFecha_nacimiento())));
+			oCEGanadoVacunoRequest.setGenotipo(poCEGanadoVacuno.getGenotipo());
+			oCEGanadoVacunoRequest.setOrigen(poCEGanadoVacuno.getOrigen());
+			moCEGanadoVacuno.setPeso(poCEGanadoVacuno.getPeso());
+			moCEGanadoVacuno.setSexo(poCEGanadoVacuno.getSexo());
+			moCEGanadoVacuno.setTalla(poCEGanadoVacuno.getTalla());
+			moCEGanadoVacuno.setTipoGana(poCEGanadoVacuno.getTipoGana());
+			hashGanadoVacuno.add(oCEGanadoVacunoRequest);
+			log.info("GUARDANDO REGISTRO CON EL CUIA "+poCEGanadoVacuno.getCuia());
+		}else {
+			log.info("NO SE PUDO REGISTRAR");
+		}
 	}
 
 	@Override
@@ -126,6 +136,38 @@ public class CMIGanadoVacuno implements CIGanadoVacuno{
 			etapa = "Adulto";
 		}
 		return etapa;
+		
+	}protected boolean buscarMadre(CEGanadoVacuno oCEGanadoVacuno) {
+		boolean rpta = false;
+		log.info("VERIFICANDO EL CUIA DE MADRE "+oCEGanadoVacuno.getCuiaMadre()+" EN LOS REGISTROS");
+		if (oCEGanadoVacuno.getCuiaMadre() !=0) {
+			Iterator<CEGanadoVacuno> it = hashGanadoVacuno.iterator();
+			while(it.hasNext()) {
+				moCEGanadoVacuno = it.next();
+
+					if (moCEGanadoVacuno.getCuia() == oCEGanadoVacuno.getCuiaMadre()) {
+						log.info("SE ENCONTRÓ EL CUIA INGRESADO DE LA MADRE EN LOS REGISTROS ACTUALES");
+						if (moCEGanadoVacuno.getSexo().equals("Hembra") && moCEGanadoVacuno.getEdad()>18) {
+							log.info("SE VALIDÓ COMO HEMBRA APTA");
+							rpta = true;
+							break;
+						}else {
+							log.info("EL CUIA DE LA MADRE INGRESADO ES DE UNA BOVINA NO APTA PARA SER MADRE");
+							rpta = false;
+							break;
+						}
+					}else {
+						//No se encuentra el registro de la madre
+						rpta = false;
+					}
+				
+			}
+		}else {
+			rpta = true;
+		}
+		
+		return rpta;
+		
 	}
 	public void setoCEGanadoVacunoResponse(CEGanadoVacuno oCEGanadoVacunoResponse) {
 		this.oCEGanadoVacunoResponse = oCEGanadoVacunoResponse;
