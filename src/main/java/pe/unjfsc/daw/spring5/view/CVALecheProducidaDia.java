@@ -25,7 +25,7 @@ public class CVALecheProducidaDia {
 		//log.info("[EVL] Todos los registros : {}" , oCMALecheProducidaDia.consultaAll());
 		//oCMALecheProducidaDia.deleteLecheProducidaDia(4002);
 		//log.info("[EVL] Todos los registros : {}" , oCMALecheProducidaDia.consultarById(4002));
-		oCMALecheProducidaDia.deleteLecheProducidaDia(1);
+		//oCMALecheProducidaDia.deleteLecheProducidaDia(1);
 		//log.info("[EVL] Todos los registros : {}" , oCMALecheProducidaDia.consultaAll());
 		//oCMALecheProducidaDia.updateLecheProducidaDia(oCELecheProducidaDia);
 		//oCMALecheProducidaDia.saveLecheProducidaDia(oCELecheProducidaDia);

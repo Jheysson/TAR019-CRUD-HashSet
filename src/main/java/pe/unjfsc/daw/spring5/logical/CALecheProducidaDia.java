@@ -12,5 +12,4 @@ public abstract class CALecheProducidaDia {
 	
 	public abstract  HashSet<CELecheProducidaDia> consultaAll();
 	public abstract  CELecheProducidaDia consultarById(int id);
-	
 }

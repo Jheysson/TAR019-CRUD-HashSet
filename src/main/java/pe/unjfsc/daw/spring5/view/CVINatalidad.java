@@ -12,7 +12,7 @@ import pe.unjfsc.daw.spring5.logical.impl.CMINatalidad;
 public class CVINatalidad {
 	private static final Logger log = LoggerFactory.getLogger("CVNatalidad");
 	public static void main(String[] args) {
-		ApplicationContext oCntx = new ClassPathXmlApplicationContext("interface-context-natalidad.xml");
+		ApplicationContext oCntx = new ClassPathXmlApplicationContext("context-natalidad.xml");
 		log.info("[EVL] Context: {}",oCntx);
 		
 		CMINatalidad oCMINatalidad = (CMINatalidad) oCntx.getBean("idCMINatalidad");
