@@ -6,7 +6,7 @@
 
 	<bean id="idCEGanadoEnfermo" class="pe.unjfsc.daw.spring5.entity.CEGanadoEnfermo"></bean>
 	
-	<!-- Bean para el uso de métodos con clase Interface -->
+	<!--- Bean para el uso de métodos con clase Interface -->
 	<bean id="idCMIGanadoEnfermo" class="pe.unjfsc.daw.spring5.logical.impl.CMIGanadoEnfermo">	
 		<property name="oCEGanadoEnfermoResponse" ref="idCEGanadoEnfermo"></property>
 		<property name="oCEGanadoEnfermoRequest" ref="idCEGanadoEnfermo"></property>
