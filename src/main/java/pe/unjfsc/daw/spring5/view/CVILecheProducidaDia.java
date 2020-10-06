@@ -13,7 +13,7 @@ public class CVILecheProducidaDia {
 	private static final Logger log = LoggerFactory.getLogger("CVLecheProducidaDia");
 	
 	public static void main(String[] args) {
-		ApplicationContext oCntx = new ClassPathXmlApplicationContext("interface-context-LecheProducidaDia.xml");
+		ApplicationContext oCntx = new ClassPathXmlApplicationContext("context-LecheProducidaDia.xml");
 		
 		CMILecheProducidaDia oCMLecheProducidaDia = (CMILecheProducidaDia) oCntx.getBean("idCMILecheProducidaDia");
 		CELecheProducidaDia oCELecheProducidaDia = new CELecheProducidaDia(1, 10.00, "1/10/2020", 4012);
@@ -22,8 +22,8 @@ public class CVILecheProducidaDia {
 		//log.info("[EVL] Solo un registro : {}" , oCMLecheProducidaDia.consultarById(4001));
 		//oCMLecheProducidaDia.updateLecheProducidaDia(oCELecheProducidaDia);
 		//log.info("[EVL] Todos los registros : {}" , oCMLecheProducidaDia.consultaAll());
-		//oCMLecheProducidaDia.deleteLecheProducidaDia(4002);
-		//log.info("[EVL] Todos los registros : {}" , oCMLecheProducidaDia.consultarById(4002));
+		oCMLecheProducidaDia.deleteLecheProducidaDia(4002);
+		log.info("[EVL] Todos los registros : {}" , oCMLecheProducidaDia.consultarById(2));
 		oCMLecheProducidaDia.deleteLecheProducidaDia(1);
 		//log.info("[EVL] Todos los registros : {}" , oCMLecheProducidaDia.consultaAll());
 		//oCMLecheProducidaDia.updateLecheProducidaDia(oCELecheProducidaDia);
