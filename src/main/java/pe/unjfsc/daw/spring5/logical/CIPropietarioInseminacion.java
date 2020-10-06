@@ -8,8 +8,7 @@ public interface CIPropietarioInseminacion {
 	public void savePropiInseminacion(CEPropietarioInseminacion pCEPropietario);
 	public void updatePropiInseminacion(CEPropietarioInseminacion pCEPropietario);
 	public void deletePropieInseminacion(int codigo);
-	
-	public HashSet<CEPropietarioInseminacion> consultaAll();
+	public HashSet<CEPropietarioInseminacion> showAll();
 	public CEPropietarioInseminacion showBycodigo(int codigo);
 
 

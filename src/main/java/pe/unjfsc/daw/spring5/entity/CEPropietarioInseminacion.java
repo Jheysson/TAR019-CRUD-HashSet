@@ -28,13 +28,16 @@ public CEPropietarioInseminacion() {}
 		this.genotipo = genotipo;
 		this.obse = obse;
 	}
+	
+	
+	
 
 	public int getcodigo() {
 		return codigo;
 	}
 
-	public void setcodigo(int Codigo) {
-		codigo = Codigo;
+	public void setcodigo(int codigo) {
+		this.codigo = codigo;
 	}
 
 	public double getPeso() {

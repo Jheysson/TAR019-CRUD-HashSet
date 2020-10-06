@@ -5,7 +5,16 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<bean id="idCEPropiInseminacion" class="pe.unjfsc.daw.spring5.entity.CEPropietarioInseminacion"></bean>
+	
+	
+	<!-- bean para uso de metodos con interface -->
 	<bean id="idCMIPropiInseminacion" class="pe.unjfsc.daw.spring5.logical.impl.CMIPropietarioInseminacion">	
+		<property name="oCEPropietarioInseResponse" ref="idCEPropiInseminacion"></property>
+		<property name="oCEPropietarioInseRequest" ref="idCEPropiInseminacion"></property>
+	</bean>
+	
+	<!-- bean para uso de metodos con abstract -->
+	<bean id="idCMAPropiInseminacion" class="pe.unjfsc.daw.spring5.logical.impl.CMAPropietarioInseminacion">	
 		<property name="oCEPropietarioInseResponse" ref="idCEPropiInseminacion"></property>
 		<property name="oCEPropietarioInseRequest" ref="idCEPropiInseminacion"></property>
 	</bean>

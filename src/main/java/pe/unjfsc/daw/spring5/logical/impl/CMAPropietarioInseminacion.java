@@ -31,18 +31,28 @@ private static final Logger log = LoggerFactory.getLogger("CMPropietarioInsemina
 	public void savePropiInseminacion(CEPropietarioInseminacion pCEPropietario) {
 		
 		log.info("GUARDANDO EL REGISTRO CON EL CODIGO" + pCEPropietario.getcodigo()+"...");
-		moHashCEPropietario.add(pCEPropietario);
+		oCEPropietarioInseRequest.setcodigo(pCEPropietario.getcodigo());
+		oCEPropietarioInseRequest.setPeso(pCEPropietario.getPeso());
+		oCEPropietarioInseRequest.setTalla(pCEPropietario.getTalla());
+		oCEPropietarioInseRequest.setLugar(pCEPropietario.getLugar());
+		oCEPropietarioInseRequest.setPrecio(pCEPropietario.getPrecio());
+		oCEPropietarioInseRequest.setFechcompra(pCEPropietario.getFechcompra());
+		oCEPropietarioInseRequest.setEstado(pCEPropietario.getEstado());
+		oCEPropietarioInseRequest.setGenotipo(pCEPropietario.getGenotipo());
+		oCEPropietarioInseRequest.setObse(pCEPropietario.getObse());
+		moHashCEPropietario.add(oCEPropietarioInseRequest);
 	}
 	
 	
 
 	@Override
 	public void updatePropiInseminacion(CEPropietarioInseminacion pCEPropietario) {
-		log.info("ACTUALIZANDO EL REGISTRO CON EL CUIA "+ pCEPropietario.getcodigo()+"...");
+		
 		Iterator<CEPropietarioInseminacion> it = moHashCEPropietario.iterator();
 		while (it.hasNext()){
 			moCEPropietarioInse = it.next();
 			if(moCEPropietarioInse.getcodigo() == pCEPropietario.getcodigo()) {
+				log.info("ACTUALIZANDO EL REGISTRO CON EL CODIGO "+pCEPropietario.getcodigo()+"...");
 				moCEPropietarioInse.setcodigo(pCEPropietario.getcodigo());
 				moCEPropietarioInse.setPeso(pCEPropietario.getPeso());
 				moCEPropietarioInse.setTalla(pCEPropietario.getTalla());
@@ -54,7 +64,7 @@ private static final Logger log = LoggerFactory.getLogger("CMPropietarioInsemina
 				moCEPropietarioInse.setObse(pCEPropietario.getObse());
 			}
 		}
-		
+		log.info("Verificar actualización: {}",showAll());
 	}
 
 	@Override
@@ -73,14 +83,13 @@ private static final Logger log = LoggerFactory.getLogger("CMPropietarioInsemina
 	}
 
 	@Override
-	public HashSet<CEPropietarioInseminacion> consultaAll() {
-		log.info("MOSTRANDO REGISTROS EXISTENTES");
+	public HashSet<CEPropietarioInseminacion> showAll() {
 		return moHashCEPropietario;
 	}
 
 	@Override
 	public CEPropietarioInseminacion showBycodigo(int codigo) {
-		log.info("MOSTRANDO EL REGISTRO "+ codigo +"......");
+		log.info("BUSCANDO EL REGISTRO "+ codigo +"......");
 		
 		
 		Iterator<CEPropietarioInseminacion> it = moHashCEPropietario.iterator();
@@ -92,6 +101,7 @@ private static final Logger log = LoggerFactory.getLogger("CMPropietarioInsemina
 				break;
 			}
 		}
+		log.info("{}",oCEPropietarioInseResponse);
 		return oCEPropietarioInseResponse;
 	}
 
