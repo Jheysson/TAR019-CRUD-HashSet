@@ -32,8 +32,8 @@ public class CMIGanadoVacuno implements CIGanadoVacuno{
 	@Override
 	public void saveGanadoVacuno(CEGanadoVacuno poCEGanadoVacuno) {
 		boolean madreApta = buscarMadre(poCEGanadoVacuno);
-		log.info("Madre apta: "+madreApta);
-		if (madreApta) {
+		boolean verifExistente = verificarExiste(poCEGanadoVacuno);
+		if (madreApta && verifExistente) {
 			oCEGanadoVacunoRequest.setCuia(poCEGanadoVacuno.getCuia());
 			oCEGanadoVacunoRequest.setAliasGanadoVacuno(poCEGanadoVacuno.getAliasGanadoVacuno());
 			oCEGanadoVacunoRequest.setCuiaMadre(poCEGanadoVacuno.getCuiaMadre());
@@ -168,7 +168,27 @@ public class CMIGanadoVacuno implements CIGanadoVacuno{
 		
 		return rpta;
 		
+	}protected boolean verificarExiste(CEGanadoVacuno oCEGanadoVacuno) {
+		boolean rpta = false;
+		
+		Iterator<CEGanadoVacuno> it = hashGanadoVacuno.iterator();
+		
+		while(it.hasNext()) {
+			moCEGanadoVacuno = it.next();
+
+				if (moCEGanadoVacuno.getCuia() == oCEGanadoVacuno.getCuia()) {
+					log.info("EL CUIA QUE SE INTENTA REGISTRAR YA EXISTE");
+					rpta = false;
+					break;
+				}else {
+					rpta = true;
+				}
+			
+		}
+		return rpta;
 	}
+	
+	
 	public void setoCEGanadoVacunoResponse(CEGanadoVacuno oCEGanadoVacunoResponse) {
 		this.oCEGanadoVacunoResponse = oCEGanadoVacunoResponse;
 	}
